@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Days Countdown</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #020617;
+      color: #ffffff;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+ 
+    .box {
+      text-align: center;
+      padding: 40px;
+      border-radius: 12px;
+      background: #0f172a;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+ 
+    .days {
+      font-size: 4rem;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+ 
+<div class="box">
+  <h1>Days Left Until 17 June 2026</h1>
+  <div class="days" id="daysLeft">0</div>
+</div>
+ 
+<script>
+  function updateDays() {
+    const today = new Date();
+    const target = new Date("2026-06-17");
+ 
+    // Clear time part to avoid partial‑day issues
+    today.setHours(0,0,0,0);
+    target.setHours(0,0,0,0);
+ 
+    const diff = target - today;
+    const daysLeft = Math.ceil(diff / (1000 * 60 * 60 * 24));
+ 
+    document.getElementById("daysLeft").textContent =
+      daysLeft >= 0 ? daysLeft : "Completed ✅";
+  }
+ 
+  updateDays();
+</script>
+ 
+</body>
+</html>
